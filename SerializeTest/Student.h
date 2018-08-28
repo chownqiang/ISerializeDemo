@@ -12,7 +12,8 @@ public:
     // AbsSerializeData interface
 protected:
     virtual void InitSerializeKeys();
-
+    QString ToJson();
+    void JsonToValue(QString jsonValue);
     //field
 public:
     QString name;

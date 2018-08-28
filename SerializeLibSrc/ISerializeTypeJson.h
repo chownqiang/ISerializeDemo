@@ -50,7 +50,6 @@ public:
 class DefaultJsonSerialize_Short : public IJsonSerializeType
 {
 public:
-    virtual QString GetId() {  return "DefaultJsonSerialize_Short";  }
 
     virtual QJsonValue SerializationJson(const SerializeData* data)
     {

@@ -6,7 +6,6 @@
 
 class CustomerJsonSerialize_QListTeacher : public IJsonSerializeType
 {
-public:
 
     // ISerializeType interface
 public:

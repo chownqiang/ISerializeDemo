@@ -12,6 +12,7 @@ class AbsSerializeData
     // function
 public:
     AbsSerializeData();
+    ~AbsSerializeData();
 
     QString SerializeToString();
     void DeserializeByString(QString strData);

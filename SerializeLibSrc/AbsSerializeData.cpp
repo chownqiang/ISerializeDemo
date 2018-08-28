@@ -8,6 +8,12 @@ AbsSerializeData::AbsSerializeData()
     this->Keys = new QList<SerializeData>();
 }
 
+AbsSerializeData::~AbsSerializeData()
+{
+    //delete JsonSerializeTool XMLSerializeTool ...
+    delete this->serializeTool ;
+    delete this->Keys;
+}
 
 QString AbsSerializeData::SerializeToString()
 {
