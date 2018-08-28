@@ -4,15 +4,15 @@
 AbsSerializeData::AbsSerializeData()
 {
     // JsonSerializeTool XMLSerializeTool ...
-    this->serializeTool = new JsonSerializeTool();
-    this->Keys = new QList<SerializeData>();
+    this->serializeTool = QSharedPointer<ISerializeTool>(new JsonSerializeTool());
+    this->Keys = QSharedPointer<QList<SerializeData>>(new QList<SerializeData>());
 }
 
 AbsSerializeData::~AbsSerializeData()
 {
-    //delete JsonSerializeTool XMLSerializeTool ...
-    delete this->serializeTool ;
-    delete this->Keys;
+    //QSharedPointer JsonSerializeTool XMLSerializeTool ...
+    //delete this->serializeTool ;
+    //delete this->Keys;  // QSharedPointer
 }
 
 QString AbsSerializeData::SerializeToString()
@@ -31,7 +31,7 @@ QList<SerializeData>* AbsSerializeData::GetKeys()
 {
     this->Init();
 
-    return this->Keys;
+    return this->Keys.data();
 }
 
 

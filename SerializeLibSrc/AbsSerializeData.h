@@ -31,8 +31,8 @@ private:
 
     // field
 private:
-    QList<SerializeData>* Keys;
-    ISerializeTool *serializeTool;
+    QSharedPointer<QList<SerializeData>> Keys;
+    QSharedPointer<ISerializeTool> serializeTool;
     bool setKeys=false;
 };
 
