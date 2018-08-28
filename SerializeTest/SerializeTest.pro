@@ -34,7 +34,8 @@ SOURCES += \
     Teacher.cpp \
     Student.cpp \
     School.cpp \
-    Classroom.cpp
+    Classroom.cpp \
+    ../SerializeLibSrc/ISerializeTypeJson.cpp
 
 DEFINES += SRCDIR=\\\"$$PWD/\\\"
 
@@ -48,4 +49,6 @@ HEADERS += \
     Teacher.h \
     Student.h \
     School.h \
-    Classroom.h
+    Classroom.h \
+    ../SerializeLibSrc/ISerializeType.h \
+    ../SerializeLibSrc/ISerializeTypeJson.h

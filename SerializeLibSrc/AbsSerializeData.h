@@ -4,6 +4,8 @@
 #include "Serializelib_Global.h"
 #include "SerializeDataType.h"
 #include "ISerializeTool.h"
+#include "ISerializeType.h"
+
 
 class AbsSerializeData
 {
@@ -21,7 +23,7 @@ protected:
     virtual void InitSerializeKeys() =0;
 
 protected:
-    void SetKeyData(QString key,void* keyPointer,SerializeDataType type);
+    void SetKeyData(QString key,void* keyPointer,ISerializeType* type);
 
 private:
     void Init();

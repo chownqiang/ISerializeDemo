@@ -1,4 +1,5 @@
 #include "Classroom.h"
+#include "../SerializeLibSrc/ISerializeTypeJson.h"
 
 Classroom::Classroom()
 {
@@ -7,7 +8,7 @@ Classroom::Classroom()
 
 void Classroom::InitSerializeKeys()
 {
-    this->SetKeyData("name",&this->name, SerializeDataType::QString_type);
-    this->SetKeyData("t", &this->t,SerializeDataType::AbsSerializeData_ptype);
-    this->SetKeyData("s", &this->s, SerializeDataType::AbsSerializeData_type);
+    this->SetKeyData("name",&this->name, new DefaultJsonSerialize_QString());
+    this->SetKeyData("t", &this->t,new DefaultJsonSerialize_PAbsSerializeData());
+    this->SetKeyData("s", &this->s,new DefaultJsonSerialize_AbsSerializeData());
 }

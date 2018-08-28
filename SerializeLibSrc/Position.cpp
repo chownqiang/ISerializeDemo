@@ -1,10 +1,11 @@
 #include "Position.h"
+#include "ISerializeTypeJson.h"
 
 
 void Position::InitSerializeKeys()
 {
-    SetKeyData( "id",&this->id,  SerializeDataType::QString_type);
-    SetKeyData( "value",&this->value, SerializeDataType::double_type);
-    SetKeyData( "username",&this->username, SerializeDataType::QString_type);
-    SetKeyData( "surname",&this->surname, SerializeDataType::QString_type);
+    SetKeyData( "id",&this->id, new DefaultJsonSerialize_QString());
+    SetKeyData( "value",&this->value,new DefaultJsonSerialize_Double());
+    SetKeyData( "username",&this->username,new DefaultJsonSerialize_QString());
+    SetKeyData( "surname",&this->surname,new DefaultJsonSerialize_QString());
 }

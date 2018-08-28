@@ -29,16 +29,13 @@ QList<SerializeData>* AbsSerializeData::GetKeys()
 }
 
 
-void AbsSerializeData::SetKeyData(QString key,void* keyPointer,SerializeDataType type)
+void AbsSerializeData::SetKeyData(QString key,void* keyPointer,ISerializeType* type)
 {
-    char * p= (char *)this;
-    int offset =  (char *)keyPointer - (char *)this;
 
     SerializeData keydata;
     keydata.key =  key;
-    keydata.offset =  offset;
+    keydata.offset = keyPointer;
     keydata.type =  type;
-    keydata.defaultPointer =  p;
 
     this->Keys->append(keydata);
 }

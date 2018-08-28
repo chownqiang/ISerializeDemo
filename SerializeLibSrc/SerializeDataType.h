@@ -2,6 +2,7 @@
 #define SERIALIZEDATATYPE_H
 
 #include "Serializelib_Global.h"
+#include "ISerializeType.h"
 
 enum SerializeDataType
 {
@@ -41,9 +42,8 @@ struct SerializeData
 {
 public:
     QString key;
-    int offset;
-    SerializeDataType type;
-    char* defaultPointer;
+    void* offset;
+    ISerializeType* type;
 };
 
 

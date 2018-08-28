@@ -25,7 +25,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     AbsSerializeData.cpp \
     JsonSerializeTool.cpp \
-    Position.cpp
+    Position.cpp \
+    ISerializeTypeJson.cpp
 
 HEADERS += \
     AbsSerializeData.h \
@@ -33,7 +34,9 @@ HEADERS += \
     JsonSerializeTool.h \
     Position.h \
     SerializeDataType.h \
-    Serializelib_Global.h
+    Serializelib_Global.h \
+    ISerializeType.h \
+    ISerializeTypeJson.h
 
 unix {
     target.path = /usr/lib
