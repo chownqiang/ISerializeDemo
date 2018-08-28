@@ -35,7 +35,9 @@ SOURCES += \
     Student.cpp \
     School.cpp \
     Classroom.cpp \
-    ../SerializeLibSrc/ISerializeTypeJson.cpp
+    ../SerializeLibSrc/ISerializeTypeJson.cpp \
+    CustomerJsonSerialize_QListTeacher.cpp \
+    CustomerJsonSerialize_QListPStudent.cpp
 
 DEFINES += SRCDIR=\\\"$$PWD/\\\"
 
@@ -44,11 +46,13 @@ HEADERS += \
     ../SerializeLibSrc/ISerializeTool.h \
     ../SerializeLibSrc/JsonSerializeTool.h \
     ../SerializeLibSrc/Position.h \
-    ../SerializeLibSrc/SerializeDataType.h \
+    ../SerializeLibSrc/SerializeData.h \
     ../SerializeLibSrc/Serializelib_Global.h \
     Teacher.h \
     Student.h \
     School.h \
     Classroom.h \
     ../SerializeLibSrc/ISerializeType.h \
-    ../SerializeLibSrc/ISerializeTypeJson.h
+    ../SerializeLibSrc/ISerializeTypeJson.h \
+    CustomerJsonSerialize_QListTeacher.h \
+    CustomerJsonSerialize_QListPStudent.h

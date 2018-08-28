@@ -2,7 +2,7 @@
 #define JSONSERIALIZETOOL_H
 
 #include "ISerializeTool.h"
-#include "SerializeDataType.h"
+#include "SerializeData.h"
 #include "Serializelib_Global.h"
 
 class JsonSerializeTool : public ISerializeTool

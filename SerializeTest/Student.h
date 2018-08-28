@@ -17,6 +17,7 @@ protected:
 public:
     QString name;
     int age;
+    float score;
     QString classroom;
 };
 

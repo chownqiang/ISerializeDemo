@@ -8,7 +8,7 @@ Classroom::Classroom()
 
 void Classroom::InitSerializeKeys()
 {
-    this->SetKeyData("name",&this->name, new DefaultJsonSerialize_QString());
-    this->SetKeyData("t", &this->t,new DefaultJsonSerialize_PAbsSerializeData());
-    this->SetKeyData("s", &this->s,new DefaultJsonSerialize_AbsSerializeData());
+    this->SetKeyData("name",&this->name, QSharedPointer<ISerializeType>(new DefaultJsonSerialize_QString()));
+    this->SetKeyData("t", &this->t, QSharedPointer<ISerializeType>(new DefaultJsonSerialize_PAbsSerializeData()));
+    this->SetKeyData("s", &this->s, QSharedPointer<ISerializeType>(new DefaultJsonSerialize_AbsSerializeData()));
 }

@@ -4,8 +4,8 @@
 
 void Position::InitSerializeKeys()
 {
-    SetKeyData( "id",&this->id, new DefaultJsonSerialize_QString());
-    SetKeyData( "value",&this->value,new DefaultJsonSerialize_Double());
-    SetKeyData( "username",&this->username,new DefaultJsonSerialize_QString());
-    SetKeyData( "surname",&this->surname,new DefaultJsonSerialize_QString());
+    SetKeyData( "id",&this->id, QSharedPointer<ISerializeType>(new DefaultJsonSerialize_QString()));
+    SetKeyData( "value",&this->value,QSharedPointer<ISerializeType>(new DefaultJsonSerialize_Double()));
+    SetKeyData( "username",&this->username,QSharedPointer<ISerializeType>(new DefaultJsonSerialize_QString()));
+    SetKeyData( "surname",&this->surname,QSharedPointer<ISerializeType>(new DefaultJsonSerialize_QString()));
 }

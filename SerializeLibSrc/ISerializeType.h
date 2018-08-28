@@ -7,6 +7,7 @@ class SerializeData;
 class ISerializeType
 {
 public:
+    virtual QString GetId()=0;
     virtual QString GetTypename()=0;
     virtual void* Serialization(const SerializeData* data)=0;
     virtual void Deserialization(const SerializeData* data,const void* value)=0;

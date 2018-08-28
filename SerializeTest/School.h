@@ -15,7 +15,7 @@ protected:
     void InitSerializeKeys();
 
 public:
-    QList<Teacher*> ts;
+    QList<Teacher> ts;
     QList<Student*> ss;
 };
 

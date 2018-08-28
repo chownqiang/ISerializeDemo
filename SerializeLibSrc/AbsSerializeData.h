@@ -2,7 +2,7 @@
 #define ABSSERIALIZEDATA_H
 
 #include "Serializelib_Global.h"
-#include "SerializeDataType.h"
+#include "SerializeData.h"
 #include "ISerializeTool.h"
 #include "ISerializeType.h"
 
@@ -19,11 +19,11 @@ public:
     QList<SerializeData>* GetKeys();
 
 protected:
-    //use SetKeyData to SetSerializeKeys
+    //use SetKeyData to SetSerializeKeys, Free by yourself
     virtual void InitSerializeKeys() =0;
 
 protected:
-    void SetKeyData(QString key,void* keyPointer,ISerializeType* type);
+    void SetKeyData(QString key,void* keyPointer,QSharedPointer<ISerializeType> type);
 
 private:
     void Init();

@@ -11,6 +11,10 @@ public:
     {
         return "IJsonSerializeType";
     }
+    ~IJsonSerializeType()
+    {
+        qDebug()<< "free :" ;
+    }
 
     // use it and free the value outside;
     virtual void* Serialization(const SerializeData* data)
@@ -30,6 +34,8 @@ public:
 class DefaultJsonSerialize_Char : public IJsonSerializeType
 {
 public:
+    virtual QString GetId() {  return "DefaultJsonSerialize_Char";  }
+
     virtual QJsonValue SerializationJson(const SerializeData* data)
     {
         return *(char*)data->offset;
@@ -44,6 +50,8 @@ public:
 class DefaultJsonSerialize_Short : public IJsonSerializeType
 {
 public:
+    virtual QString GetId() {  return "DefaultJsonSerialize_Short";  }
+
     virtual QJsonValue SerializationJson(const SerializeData* data)
     {
         return *(short*)data->offset;
@@ -58,6 +66,8 @@ public:
 class DefaultJsonSerialize_Int :public IJsonSerializeType
 {
 public:
+    virtual QString GetId() {  return "DefaultJsonSerialize_Int";  }
+
     virtual QJsonValue SerializationJson(const SerializeData* data)
     {
         return *(int*)(data->offset);
@@ -72,6 +82,7 @@ public:
 class DefaultJsonSerialize_Qlonglong : public IJsonSerializeType
 {
 public:
+    virtual QString GetId() {  return "DefaultJsonSerialize_Qlonglong";  }
 
     virtual QJsonValue SerializationJson(const SerializeData* data)
     {
@@ -87,6 +98,8 @@ public:
 class DefaultJsonSerialize_Float : public IJsonSerializeType
 {
 public:
+    virtual QString GetId() {  return "DefaultJsonSerialize_Float";  }
+
     virtual QJsonValue SerializationJson(const SerializeData* data)
     {
         return *(float*)data->offset;
@@ -101,6 +114,8 @@ public:
 class DefaultJsonSerialize_Double : public IJsonSerializeType
 {
 public:
+    virtual QString GetId() {  return "DefaultJsonSerialize_Double";  }
+
     virtual QJsonValue SerializationJson(const SerializeData* data)
     {
         return *(double*)data->offset;
@@ -115,6 +130,8 @@ public:
 class DefaultJsonSerialize_QString : public IJsonSerializeType
 {
 public:
+    virtual QString GetId() {  return "DefaultJsonSerialize_QString";  }
+
     virtual QJsonValue SerializationJson(const SerializeData* data)
     {
         return *(QString*)data->offset;
@@ -129,6 +146,8 @@ public:
 class DefaultJsonSerialize_AbsSerializeData : public IJsonSerializeType
 {
 public:
+    virtual QString GetId() {  return "DefaultJsonSerialize_AbsSerializeData";  }
+
     virtual QJsonValue SerializationJson(const SerializeData* data)
     {
         return ((AbsSerializeData *)data->offset)->SerializeToString();
@@ -143,6 +162,8 @@ public:
 class DefaultJsonSerialize_PAbsSerializeData : public IJsonSerializeType
 {
 public:
+    virtual QString GetId() {  return "DefaultJsonSerialize_PAbsSerializeData";  }
+
     virtual QJsonValue SerializationJson(const SerializeData* data)
     {
         return (*(AbsSerializeData **)data->offset)->SerializeToString();

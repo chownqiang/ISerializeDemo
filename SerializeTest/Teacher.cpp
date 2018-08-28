@@ -4,7 +4,7 @@
 
 void Teacher::InitSerializeKeys()
 {
-    this->SetKeyData("name", &this->name,new DefaultJsonSerialize_QString());
-    this->SetKeyData("age", &this->age,  new DefaultJsonSerialize_Int());
-    this->SetKeyData("salary", &this->salary,new DefaultJsonSerialize_Qlonglong());
+    this->SetKeyData("name", &this->name, QSharedPointer<ISerializeType>(new DefaultJsonSerialize_QString()));
+    this->SetKeyData("age", &this->age,  QSharedPointer<ISerializeType>(new DefaultJsonSerialize_Int()));
+    this->SetKeyData("salary", &this->salary,QSharedPointer<ISerializeType>(new DefaultJsonSerialize_Qlonglong()));
 }

@@ -33,10 +33,10 @@ HEADERS += \
     ISerializeTool.h \
     JsonSerializeTool.h \
     Position.h \
-    SerializeDataType.h \
     Serializelib_Global.h \
     ISerializeType.h \
-    ISerializeTypeJson.h
+    ISerializeTypeJson.h \
+    SerializeData.h
 
 unix {
     target.path = /usr/lib
