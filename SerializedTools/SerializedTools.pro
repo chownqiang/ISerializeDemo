@@ -26,7 +26,8 @@ SOURCES += \
     SerializedTool.cpp \
     JsonSerialized.cpp \
     SerializeData.cpp \
-    RegistorType.cpp
+    RegistorType.cpp \
+    JsonSerializeType.cpp
 
 HEADERS += \
         serializedtools_global.h \ 
@@ -35,7 +36,9 @@ HEADERS += \
     ISerialized.h \
     JsonSerialized.h \
     SerializeData.h \
-    RegistorType.h
+    RegistorType.h \
+    IJsonSerializeType.h \
+    JsonSerializeType.h
 
 unix {
     target.path = /usr/lib
