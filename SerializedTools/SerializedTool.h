@@ -15,6 +15,7 @@ class SERIALIZEDTOOLSSHARED_EXPORT SerializedTool
 public:
     static SerializedTool* Instance();
     void Registor(RegistorType type);
+    bool ContainsKey(QString typeName);
 
     QString Serialized(void* data, QString typeName);
     void Deserialized(void* data, QString typeName, QString dataStr);
