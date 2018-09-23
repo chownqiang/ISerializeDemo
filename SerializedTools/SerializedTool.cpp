@@ -1,5 +1,6 @@
 #include "SerializedTool.h"
 #include "JsonSerialized.h"
+#include "JsonSerializedType.h"
 
 
 SerializedTool* SerializedTool::Instance()
@@ -47,5 +48,10 @@ void SerializedTool::Deserialized(void *data, QString typeName, QString dataStr)
 SerializedTool::SerializedTool()
 {
     this->itool = new JsonSerialized();
+    //registor JsonSerializedType
+    {
+        ISerializedType * jchar = new JsonSerializedTypeChar();
+        this->serializedType.insert(jchar->GetId(),jchar);
+    }
 }
 

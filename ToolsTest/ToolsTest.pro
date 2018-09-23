@@ -27,19 +27,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-        tst_toolstest.cpp \
+    tst_toolstest.cpp \
     ../SerializedTools/JsonSerialized.cpp \
+    ../SerializedTools/JsonSerializedType.cpp \
     ../SerializedTools/RegistorType.cpp \
-    ../SerializedTools/SerializeData.cpp \
+    ../SerializedTools/SerializedData.cpp \
     ../SerializedTools/SerializedTool.cpp \
     Student.cpp
 
 HEADERS += \
     ../SerializedTools/ISerialized.h \
-    ../SerializedTools/ISerializeType.h \
+    ../SerializedTools/ISerializedType.h \
+    ../SerializedTools/JsonSerializedType.h \
     ../SerializedTools/JsonSerialized.h \
     ../SerializedTools/RegistorType.h \
-    ../SerializedTools/SerializeData.h \
+    ../SerializedTools/SerializedData.h \
     ../SerializedTools/SerializedTool.h \
     ../SerializedTools/serializedtools_global.h \
     Student.h

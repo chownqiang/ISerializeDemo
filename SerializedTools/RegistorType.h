@@ -1,6 +1,6 @@
 #ifndef REGISTORTYPE_H
 #define REGISTORTYPE_H
-#include "SerializeData.h"
+#include "SerializedData.h"
 
 #include <QSharedPointer>
 #include <QString>
@@ -11,13 +11,13 @@ public:
     RegistorType();
     RegistorType(const RegistorType& data);
     RegistorType(const QString typeName);
-    void RegistorField(const void* pThis, QString key, void* keyPointer,QSharedPointer<ISerializeType> type);
-    QSharedPointer<QList<SerializeData>> GetKeys();
+    void RegistorField(const void* pThis, QString key, void* keyPointer,ISerializedType* type);
+    QList<SerializedData>* GetKeys();
 
     QString typeName;
     // Field:
 private:
-    QSharedPointer<QList<SerializeData>> Keys;
+    QList<SerializedData>* Keys;
 };
 
 #endif // REGISTORTYPE_H

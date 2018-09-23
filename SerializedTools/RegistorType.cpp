@@ -14,10 +14,10 @@ RegistorType::RegistorType(const RegistorType &data)
 RegistorType::RegistorType(const QString typeName)
 {
     this->typeName = typeName;
-    this->Keys = QSharedPointer<QList<SerializeData>>(new QList<SerializeData>());
+    this->Keys =new QList<SerializedData>();
 }
 
-void RegistorType::RegistorField(const void *pThis, QString key, void *keyPointer, QSharedPointer<ISerializeType> type)
+void RegistorType::RegistorField(const void *pThis, QString key, void *keyPointer, ISerializedType* type)
 {
     if(this->typeName == "")
     {
@@ -25,7 +25,7 @@ void RegistorType::RegistorField(const void *pThis, QString key, void *keyPointe
         return;
     }
 
-    SerializeData keydata;
+    SerializedData keydata;
     keydata.key =  key;
     keydata.offset = (char*)pThis - (char*)keyPointer;
     keydata.type = type;
@@ -33,7 +33,7 @@ void RegistorType::RegistorField(const void *pThis, QString key, void *keyPointe
     this->Keys->append(keydata);
 }
 
-QSharedPointer<QList<SerializeData>> RegistorType::GetKeys()
+QList<SerializedData>* RegistorType::GetKeys()
 {
     return this->Keys;
 }

@@ -2,6 +2,7 @@
 #define SERIALIZEDTOOL_H
 
 #include "ISerialized.h"
+#include "JsonSerializedType.h"
 #include "RegistorType.h"
 #include "serializedtools_global.h"
 
@@ -20,8 +21,10 @@ public:
 
 private:
     SerializedTool();
-    QMap<QString,QSharedPointer<QList<SerializeData>>> container;
+    QMap<QString, QList<SerializedData>*> container;
     ISerialized * itool;
+
+    QMap<QString,ISerializedType*> serializedType;
 };
 
 #endif // SERIALIZEDTOOL_H
