@@ -25,32 +25,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     SerializedTool.cpp \
     JsonSerialized.cpp \
-<<<<<<< HEAD
     RegistorType.cpp \
     SerializedData.cpp \
     JsonSerializedType.cpp
-=======
-    SerializeData.cpp \
-    RegistorType.cpp \
-    JsonSerializeType.cpp
->>>>>>> e486097683a799512068ceb1ceb4f7d4371a1945
 
 HEADERS += \
     serializedtools_global.h \
     SerializedTool.h \
     ISerialized.h \
     JsonSerialized.h \
-<<<<<<< HEAD
     RegistorType.h \
     ISerializedType.h \
     SerializedData.h \
     JsonSerializedType.h
-=======
-    SerializeData.h \
-    RegistorType.h \
-    IJsonSerializeType.h \
-    JsonSerializeType.h
->>>>>>> e486097683a799512068ceb1ceb4f7d4371a1945
 
 unix {
     target.path = /usr/lib
