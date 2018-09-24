@@ -37,7 +37,8 @@ HEADERS += \
     RegistorType.h \
     ISerializedType.h \
     SerializedData.h \
-    JsonSerializedType.h
+    JsonSerializedType.h \
+    ISerializedModel.h
 
 unix {
     target.path = /usr/lib

@@ -11,7 +11,7 @@ public:
     RegistorType();
     RegistorType(const RegistorType& data);
     RegistorType(const QString typeName);
-    void RegistorField(const void* pThis, QString key, void* keyPointer,ISerializedType* type);
+    void RegistorField(const void* pThis, QString key, void* keyPointer,QString iSerializedTypeId);
     QList<SerializedData>* GetKeys();
 
     QString typeName;

@@ -37,6 +37,7 @@ SOURCES += \
 
 HEADERS += \
     ../SerializedTools/ISerialized.h \
+    ../SerializedTools/ISerializedModel.h \
     ../SerializedTools/ISerializedType.h \
     ../SerializedTools/JsonSerializedType.h \
     ../SerializedTools/JsonSerialized.h \

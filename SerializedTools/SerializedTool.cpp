@@ -28,19 +28,25 @@ bool SerializedTool::ContainsKey(QString typeName)
     return container.keys().contains(typeName);
 }
 
-QString SerializedTool::Serialized(void *data, QString typeName)
+QString SerializedTool::Serialized(ISerializedModel *data, QString typeName)
 {
+   if(!this->container.keys().contains(typeName))
+       data->RegistorTool();
+
     if(!this->container.keys().contains(typeName))
     {
         qDebug() << "find not typeName, please use functional SerializedTool::Registor :" << typeName ;
         return "";
     }
 
-    this->itool->Serialization(data,this->container[typeName]);
+    return this->itool->Serialization(data,this->container[typeName]);
 }
 
-void SerializedTool::Deserialized(void *data, QString typeName, QString dataStr)
+void SerializedTool::Deserialized(ISerializedModel *data, QString typeName, QString dataStr)
 {
+    if(!this->container.keys().contains(typeName))
+        data->RegistorTool();
+
     if(!this->container.keys().contains(typeName))
     {
         qDebug() << "find not typeName, please use functional SerializedTool::Registor :" << typeName ;
@@ -52,11 +58,6 @@ void SerializedTool::Deserialized(void *data, QString typeName, QString dataStr)
 
 SerializedTool::SerializedTool()
 {
-    this->itool = new JsonSerialized();
-    //registor JsonSerializedType
-    {
-        ISerializedType * jchar = new JsonSerializedTypeChar();
-        this->serializedType.insert(jchar->GetId(),jchar);
-    }
+    this->itool = JsonSerialized::Instance();
 }
 

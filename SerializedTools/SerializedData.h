@@ -11,7 +11,7 @@ public:
     void* getOffset(const void* data);
     QString key;
     int64_t offset;
-    ISerializedType* type;
+    QString typeId;
 };
 
 

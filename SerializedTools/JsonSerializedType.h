@@ -24,7 +24,6 @@ class JsonSerializedTypeChar : public AbsJsonSerializedType
 public:
     QString GetId();
 
-
     // AbsJsonSerializeType interface
 public:
     QJsonValue SerializationJson(const void *model, SerializedData *data);
@@ -33,8 +32,6 @@ public:
 
 class JsonSerializedTypeShort : public AbsJsonSerializedType
 {
-
-
     // ISerializedType interface
 public:
     QString GetId();
@@ -47,8 +44,6 @@ public:
 
 class JsonSerializedTypeInt : public AbsJsonSerializedType
 {
-
-
     // ISerializedType interface
 public:
     QString GetId();
@@ -60,6 +55,18 @@ public:
 };
 
 class JsonSerializedTypeQlonglong : public AbsJsonSerializedType
+{
+    // ISerializedType interface
+public:
+    QString GetId();
+
+    // AbsJsonSerializedType interface
+public:
+    QJsonValue SerializationJson(const void *model, SerializedData *data);
+    void DeserializationJson(const void *model, SerializedData *data, QJsonValue *value);
+};
+
+class JsonSerializedTypeFloat : public AbsJsonSerializedType
 {
 
 
@@ -73,4 +80,75 @@ public:
     void DeserializationJson(const void *model, SerializedData *data, QJsonValue *value);
 };
 
+class JsonSerializedTypeDouble : public AbsJsonSerializedType
+{
+    // ISerializedType interface
+public:
+    QString GetId();
+
+    // AbsJsonSerializedType interface
+public:
+    QJsonValue SerializationJson(const void *model, SerializedData *data);
+    void DeserializationJson(const void *model, SerializedData *data, QJsonValue *value);
+};
+
+class JsonSerializedTypeQString : public AbsJsonSerializedType
+{
+    // ISerializedType interface
+public:
+    QString GetId();
+
+    // AbsJsonSerializedType interface
+public:
+    QJsonValue SerializationJson(const void *model, SerializedData *data);
+    void DeserializationJson(const void *model, SerializedData *data, QJsonValue *value);
+};
+
+class JsonSerializedTypeIJsonModel : public AbsJsonSerializedType
+{
+
+
+    // ISerializedType interface
+public:
+    QString GetId();
+
+    // AbsJsonSerializedType interface
+public:
+    QJsonValue SerializationJson(const void *model, SerializedData *data);
+    void DeserializationJson(const void *model, SerializedData *data, QJsonValue *value);
+};
+
+class JsonSerializedTypePIJsonModel : public AbsJsonSerializedType
+{
+
+    // ISerializedType interface
+public:
+    QString GetId();
+
+    // AbsJsonSerializedType interface
+public:
+    QJsonValue SerializationJson(const void *model, SerializedData *data);
+    void DeserializationJson(const void *model, SerializedData *data, QJsonValue *value);
+};
+
+
+
+
+
 #endif // JSONSERIALIZETYPE_H
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

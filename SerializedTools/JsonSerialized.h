@@ -8,9 +8,13 @@
 class JsonSerialized : public ISerialized
 {
 public:
-    virtual QString Serialization(const void* data, QList<SerializedData>* dataKeys);
-    virtual void Deserialization(const void* data, QList<SerializedData>* dataKeys, QString strData);
+    static JsonSerialized* Instance();
+    virtual QString Serialization(const ISerializedModel* data, QList<SerializedData>* dataKeys);
+    virtual void Deserialization(const ISerializedModel* data, QList<SerializedData>* dataKeys, QString strData);
 
+private:
+    JsonSerialized();
+    QMap<QString,ISerializedType*> serializedType;
 };
 
 
