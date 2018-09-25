@@ -33,7 +33,8 @@ SOURCES += \
     ../SerializedTools/RegistorType.cpp \
     ../SerializedTools/SerializedData.cpp \
     ../SerializedTools/SerializedTool.cpp \
-    Student.cpp
+    Student.cpp \
+    Teacher.cpp
 
 HEADERS += \
     ../SerializedTools/ISerialized.h \
@@ -45,4 +46,5 @@ HEADERS += \
     ../SerializedTools/SerializedData.h \
     ../SerializedTools/SerializedTool.h \
     ../SerializedTools/serializedtools_global.h \
-    Student.h
+    Student.h \
+    Teacher.h

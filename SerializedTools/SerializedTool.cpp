@@ -23,11 +23,6 @@ void SerializedTool::Registor(RegistorType type)
     container.insert(type.typeName,type.GetKeys());
 }
 
-bool SerializedTool::ContainsKey(QString typeName)
-{
-    return container.keys().contains(typeName);
-}
-
 QString SerializedTool::Serialized(ISerializedModel *data, QString typeName)
 {
    if(!this->container.keys().contains(typeName))
