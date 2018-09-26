@@ -10,6 +10,7 @@ public:
     Teacher();
 
     Student * st;
+    Student * st1;
     Student  st2;
     QString name;
     int age;

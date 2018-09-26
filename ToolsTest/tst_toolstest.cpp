@@ -1,5 +1,6 @@
 #include "Student.h"
 #include "Teacher.h"
+#include "../SerializedTools/SerializedTool.h"
 
 #include <QString>
 #include <QtTest>
@@ -13,6 +14,9 @@ public:
 
 private Q_SLOTS:
     void testCase1();
+    void TestQPair_int_int();
+    void TestQPair_QString_Student();
+    void TestQPair_QString_PStudent();
     void TestStudent();
     void TestTeacher();
 };
@@ -24,6 +28,94 @@ ToolsTest::ToolsTest()
 void ToolsTest::testCase1()
 {
     QVERIFY2(true, "Failure");
+}
+
+void ToolsTest::TestQPair_int_int()
+{
+    QPair<int,int> s(1,2);
+
+    RegistorType type = RegistorType(GETNAME(QPair_int_int));
+    type.RegistorField(&s, "key", &s.first, JsonSerializedTypeInt().GetId());
+    type.RegistorField(&s, "value", &s.second, JsonSerializedTypeInt().GetId());
+
+    SerializedTool::Instance()->Registor(type);
+
+    QString json = SerializedTool::Instance()->Serialized(&s,GETNAME(QPair_int_int));
+    qDebug() << json;
+
+    QPair<int,int> s2;
+    SerializedTool::Instance()->Deserialized(&s2,GETNAME(QPair_int_int), json);
+
+
+    QString json2 = SerializedTool::Instance()->Serialized(&s2,GETNAME(QPair_int_int));
+    qDebug() << json2;
+
+    QVERIFY2(json == json2, "Failure json");
+}
+
+void ToolsTest::TestQPair_QString_Student()
+{
+    Student st;
+    st.age = 20;
+    st.name = "jason";
+    QPair<QString,Student> s("1",st);
+
+    RegistorType type = RegistorType(GETNAME(QPair_QString_Student));
+    type.RegistorField(&s, "key", &s.first, JsonSerializedTypeQString().GetId());
+    type.RegistorField(&s, "value", &s.second, JsonSerializedTypeIJsonModel().GetId());
+
+    SerializedTool::Instance()->Registor(type);
+
+    QString json = SerializedTool::Instance()->Serialized(&s,GETNAME(QPair_QString_Student));
+    qDebug() << json;
+
+    QPair<QString,Student> s2;
+    SerializedTool::Instance()->Deserialized(&s2,GETNAME(QPair_QString_Student), json);
+
+
+    QString json2 = SerializedTool::Instance()->Serialized(&s2,GETNAME(QPair_QString_Student));
+    qDebug() << json2;
+
+    QVERIFY2(json == json2, "Failure json");
+}
+
+void ToolsTest::TestQPair_QString_PStudent()
+{
+    Student st;
+    st.age = 20;
+    st.name = "jason";
+    QPair<QString,Student*> s("1",&st);
+
+    {
+        RegistorType type = RegistorType(GETNAME(QPair_QString_PStudent));
+        type.RegistorField(&s, "key", &s.first, JsonSerializedTypeQString().GetId());
+        type.RegistorField(&s, "value", &s.second, JsonSerializedTypePIJsonModel().GetId());
+
+        SerializedTool::Instance()->Registor(type);
+    }
+
+    {
+        RegistorType type = RegistorType(GETNAME(QPair_QString_Student));
+        type.RegistorField(&s, "key", &s.first, JsonSerializedTypeQString().GetId());
+        type.RegistorField(&s, "value", &s.second, JsonSerializedTypeIJsonModel().GetId());
+
+        SerializedTool::Instance()->Registor(type);
+
+    }
+
+
+
+    QString json = SerializedTool::Instance()->Serialized(&s,GETNAME(QPair_QString_PStudent));
+    qDebug() << json;
+
+    QPair<QString,Student> s2;
+    SerializedTool::Instance()->Deserialized(&s2,GETNAME(QPair_QString_Student), json);
+
+
+    QString json2 = SerializedTool::Instance()->Serialized(&s2,GETNAME(QPair_QString_Student));
+    qDebug() << json2;
+
+    QVERIFY2(json == json2, "Failure json");
 }
 
 void ToolsTest::TestStudent()

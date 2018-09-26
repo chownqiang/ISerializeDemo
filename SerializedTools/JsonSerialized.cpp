@@ -13,7 +13,7 @@ JsonSerialized* JsonSerialized::Instance()
     return model;
 }
 
-QString JsonSerialized::Serialization(const ISerializedModel* data, QList<SerializedData>* dataKeys)
+QString JsonSerialized::Serialization(const void* data, QList<SerializedData>* dataKeys)
 {
     // TODO: !IJsonModel ,error
     QJsonObject json;
@@ -44,7 +44,7 @@ QString JsonSerialized::Serialization(const ISerializedModel* data, QList<Serial
     return strJson;
 }
 
-void JsonSerialized::Deserialization(const ISerializedModel* data, QList<SerializedData>* dataKeys, QString strData)
+void JsonSerialized::Deserialization(const void* data, QList<SerializedData>* dataKeys, QString strData)
 {
     // TODO: !IJsonModel ,error
 

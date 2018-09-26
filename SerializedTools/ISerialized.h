@@ -10,8 +10,9 @@
 class ISerialized
 {
 public:
-    virtual QString Serialization(const ISerializedModel* data, QList<SerializedData>* dataKeys)=0;
-    virtual void Deserialization(const ISerializedModel* data, QList<SerializedData>* dataKeys, QString strData)=0;
+    virtual QString Serialization(const void* data, QList<SerializedData>* dataKeys)=0;
+    virtual void Deserialization(const void* data, QList<SerializedData>* dataKeys, QString strData)=0;
+
 };
 
 #endif // ISERIALIZED_H

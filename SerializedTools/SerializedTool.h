@@ -6,6 +6,8 @@
 #include "JsonSerializedType.h"
 #include "RegistorType.h"
 #include "serializedtools_global.h"
+#include <QPair>
+#include <QMap>
 
 
 #define GETNAME(type) (#type)
@@ -18,6 +20,9 @@ public:
 
     QString Serialized(ISerializedModel* data, QString typeName);
     void Deserialized(ISerializedModel* data, QString typeName, QString dataStr);
+
+    QString Serialized(void* data, QString typeName);
+    void Deserialized(void* data, QString typeName, QString dataStr);
 
 private:
     SerializedTool();
