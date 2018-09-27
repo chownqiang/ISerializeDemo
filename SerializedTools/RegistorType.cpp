@@ -33,6 +33,23 @@ void RegistorType::RegistorField(const void *pThis, QString key, void *keyPointe
     this->Keys->append(keydata);
 }
 
+void RegistorType::RegistorField(const void *pThis, QString key, void *keyPointer, QString iSerializedTypeId,std::function<QString(void* data)> customerFunc )
+{
+    if(this->typeName == "")
+    {
+        qDebug() << "null of typeName, please use RegistorType::RegistorType(QString typeName)";
+        return;
+    }
+
+    SerializedData keydata;
+    keydata.key =  key;
+    keydata.offset = (char*)keyPointer - (char*)pThis;
+    keydata.typeId = iSerializedTypeId;
+    keydata.func = customerFunc;
+
+    this->Keys->append(keydata);
+}
+
 QList<SerializedData>* RegistorType::GetKeys()
 {
     return this->Keys;

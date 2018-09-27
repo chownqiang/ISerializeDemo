@@ -4,6 +4,9 @@
 #include "serializedtools_global.h"
 #include "ISerializedType.h"
 #include <QMap>
+#include <getopt.h>
+#include <functional>
+#include <ctype.h>
 
 struct SerializedData
 {
@@ -12,6 +15,7 @@ public:
     QString key;
     int64_t offset;
     QString typeId;
+    std::function<QString(void* data)> func;
 };
 
 

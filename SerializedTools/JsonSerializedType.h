@@ -13,8 +13,8 @@ public:
     void* Serialization(const void* model, SerializedData* data);
     void Deserialization(const void* model, SerializedData* data,const void* value);
 
-    virtual QJsonValue SerializationJson(void *model)=0;
-    virtual void DeserializationJson(void *model, QJsonValue* value)=0;
+    virtual QJsonValue SerializationJson(const void* model, SerializedData* data)=0;
+    virtual void DeserializationJson(const void* model, SerializedData* data, const QJsonValue* value)=0;
 
 };
 
@@ -26,8 +26,8 @@ public:
 
     // AbsJsonSerializeType interface
 public:
-    QJsonValue SerializationJson(void *model);
-    void DeserializationJson(void *model, QJsonValue *value);
+    QJsonValue SerializationJson(const void* model, SerializedData* data);
+    void DeserializationJson(const void* model, SerializedData* data, const QJsonValue* value);
 };
 
 class JsonSerializedTypeShort : public AbsJsonSerializedType
@@ -38,8 +38,8 @@ public:
 
     // AbsJsonSerializedType interface
 public:
-    QJsonValue SerializationJson(void *model);
-    void DeserializationJson(void *model, QJsonValue *value);
+    QJsonValue SerializationJson(const void* model, SerializedData* data);
+    void DeserializationJson(const void* model, SerializedData* data, const QJsonValue* value);
 };
 
 class JsonSerializedTypeInt : public AbsJsonSerializedType
@@ -50,8 +50,8 @@ public:
 
     // AbsJsonSerializedType interface
 public:
-    QJsonValue SerializationJson(void *model);
-    void DeserializationJson(void *model, QJsonValue *value);
+    QJsonValue SerializationJson(const void* model, SerializedData* data);
+    void DeserializationJson(const void* model, SerializedData* data, const QJsonValue* value);
 };
 
 class JsonSerializedTypeQlonglong : public AbsJsonSerializedType
@@ -62,8 +62,8 @@ public:
 
     // AbsJsonSerializedType interface
 public:
-    QJsonValue SerializationJson(void *model);
-    void DeserializationJson(void *model, QJsonValue *value);
+    QJsonValue SerializationJson(const void* model, SerializedData* data);
+    void DeserializationJson(const void* model, SerializedData* data, const QJsonValue* value);
 };
 
 class JsonSerializedTypeFloat : public AbsJsonSerializedType
@@ -76,8 +76,8 @@ public:
 
     // AbsJsonSerializedType interface
 public:
-    QJsonValue SerializationJson(void *model);
-    void DeserializationJson(void *model, QJsonValue *value);
+    QJsonValue SerializationJson(const void* model, SerializedData* data);
+    void DeserializationJson(const void* model, SerializedData* data, const QJsonValue* value);
 };
 
 class JsonSerializedTypeDouble : public AbsJsonSerializedType
@@ -88,8 +88,8 @@ public:
 
     // AbsJsonSerializedType interface
 public:
-    QJsonValue SerializationJson(void *model);
-    void DeserializationJson(void *model, QJsonValue *value);
+    QJsonValue SerializationJson(const void* model, SerializedData* data);
+    void DeserializationJson(const void* model, SerializedData* data, const QJsonValue* value);
 };
 
 class JsonSerializedTypeQString : public AbsJsonSerializedType
@@ -100,8 +100,8 @@ public:
 
     // AbsJsonSerializedType interface
 public:
-    QJsonValue SerializationJson(void *model);
-    void DeserializationJson(void *model, QJsonValue *value);
+    QJsonValue SerializationJson(const void* model, SerializedData* data);
+    void DeserializationJson(const void* model, SerializedData* data, const QJsonValue* value);
 };
 
 class JsonSerializedTypeIJsonModel : public AbsJsonSerializedType
@@ -114,12 +114,13 @@ public:
 
     // AbsJsonSerializedType interface
 public:
-    QJsonValue SerializationJson(void *model);
-    void DeserializationJson(void *model, QJsonValue *value);
+    QJsonValue SerializationJson(const void* model, SerializedData* data);
+    void DeserializationJson(const void* model, SerializedData* data, const QJsonValue* value);
 };
 
 class JsonSerializedTypePIJsonModel : public AbsJsonSerializedType
 {
+
 
     // ISerializedType interface
 public:
@@ -127,10 +128,9 @@ public:
 
     // AbsJsonSerializedType interface
 public:
-    QJsonValue SerializationJson(void *model);
-    void DeserializationJson(void *model, QJsonValue *value);
+    QJsonValue SerializationJson(const void* model, SerializedData* data);
+    void DeserializationJson(const void* model, SerializedData* data, const QJsonValue* value);
 };
-
 
 
 #endif // JSONSERIALIZETYPE_H

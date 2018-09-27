@@ -8,6 +8,7 @@ Teacher::Teacher()
 {
     st = new Student();
     st1 = nullptr;
+//    pair = nullptr;
     //st->RegistorTool();
 }
 

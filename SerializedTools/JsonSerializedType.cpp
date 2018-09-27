@@ -10,12 +10,12 @@ QString AbsJsonSerializedType::GetTypename()
 
 void *AbsJsonSerializedType::Serialization(const void* model, SerializedData* data)
 {
-    return new QJsonValue(this->SerializationJson(data->getOffset(model)));
+    return new QJsonValue(this->SerializationJson(model, data));
 }
 
 void AbsJsonSerializedType::Deserialization(const void* model, SerializedData* data, const void* value)
 {
-    this->DeserializationJson(data->getOffset(model), (QJsonValue*)value);
+    this->DeserializationJson(model, data, (QJsonValue*)value);
 }
 
 
@@ -25,14 +25,14 @@ QString JsonSerializedTypeChar::GetId()
     return "JsonSerializedTypeChar";
 }
 
-QJsonValue JsonSerializedTypeChar::SerializationJson(void *model)
+QJsonValue JsonSerializedTypeChar::SerializationJson(const void* model, SerializedData* data)
 {
-    return *(char*)model;
+    return *(char*)(data->getOffset(model));
 }
 
-void JsonSerializedTypeChar::DeserializationJson(void *model, QJsonValue *value)
+void JsonSerializedTypeChar::DeserializationJson(const void* model, SerializedData* data, const QJsonValue* value)
 {
-    *(char*)model=value->toInt();
+    *(char*)(data->getOffset(model))=value->toInt();
 }
 
 //JsonSerializedTypeShort
@@ -41,14 +41,14 @@ QString JsonSerializedTypeShort::GetId()
     return "JsonSerializedTypeShort";
 }
 
-QJsonValue JsonSerializedTypeShort::SerializationJson(void *model)
+QJsonValue JsonSerializedTypeShort::SerializationJson(const void* model, SerializedData* data)
 {
-    return *(short*)model;
+    return *(short*)(data->getOffset(model));
 }
 
-void JsonSerializedTypeShort::DeserializationJson(void *model, QJsonValue *value)
+void JsonSerializedTypeShort::DeserializationJson(const void* model, SerializedData* data, const QJsonValue* value)
 {
-    *(short*)model=value->toInt();
+    *(short*)(data->getOffset(model))=value->toInt();
 }
 
 //JsonSerializedTypeInt
@@ -57,14 +57,14 @@ QString JsonSerializedTypeInt::GetId()
     return "JsonSerializedTypeInt";
 }
 
-QJsonValue JsonSerializedTypeInt::SerializationJson(void *model)
+QJsonValue JsonSerializedTypeInt::SerializationJson(const void* model, SerializedData* data)
 {
-    return *(int*)model;
+    return *(int*)(data->getOffset(model));
 }
 
-void JsonSerializedTypeInt::DeserializationJson(void *model, QJsonValue *value)
+void JsonSerializedTypeInt::DeserializationJson(const void* model, SerializedData* data, const QJsonValue* value)
 {
-    *(int*)model=value->toInt();
+    *(int*)(data->getOffset(model))=value->toInt();
 }
 
 
@@ -74,14 +74,14 @@ QString JsonSerializedTypeQlonglong::GetId()
     return "JsonSerializedTypeQlonglong";
 }
 
-QJsonValue JsonSerializedTypeQlonglong::SerializationJson(void *model)
+QJsonValue JsonSerializedTypeQlonglong::SerializationJson(const void* model, SerializedData* data)
 {
-    return *(qlonglong*)model;
+    return *(qlonglong*)(data->getOffset(model));
 }
 
-void JsonSerializedTypeQlonglong::DeserializationJson(void *model, QJsonValue *value)
+void JsonSerializedTypeQlonglong::DeserializationJson(const void* model, SerializedData* data, const QJsonValue* value)
 {
-    *(qlonglong*)model=value->toVariant().toLongLong();
+    *(qlonglong*)(data->getOffset(model))=value->toVariant().toLongLong();
 }
 
 
@@ -91,15 +91,15 @@ QString JsonSerializedTypeFloat::GetId()
     return "JsonSerializedTypeFloat";
 }
 
-QJsonValue JsonSerializedTypeFloat::SerializationJson(void *model)
+QJsonValue JsonSerializedTypeFloat::SerializationJson(const void* model, SerializedData* data)
 {
-    return *(double*)model;
+    return *(double*)(data->getOffset(model));
 
 }
 
-void JsonSerializedTypeFloat::DeserializationJson(void *model, QJsonValue *value)
+void JsonSerializedTypeFloat::DeserializationJson(const void* model, SerializedData* data, const QJsonValue* value)
 {
-    *(double*)model=value->toDouble();
+    *(double*)(data->getOffset(model))=value->toDouble();
 }
 
 
@@ -110,14 +110,14 @@ QString JsonSerializedTypeDouble::GetId()
     return "JsonSerializedTypeDouble";
 }
 
-QJsonValue JsonSerializedTypeDouble::SerializationJson(void *model)
+QJsonValue JsonSerializedTypeDouble::SerializationJson(const void* model, SerializedData* data)
 {
-    return *(double*)model;
+    return *(double*)(data->getOffset(model));
 }
 
-void JsonSerializedTypeDouble::DeserializationJson(void *model, QJsonValue *value)
+void JsonSerializedTypeDouble::DeserializationJson(const void* model, SerializedData* data, const QJsonValue* value)
 {
-    *(double*)model=value->toDouble();
+    *(double*)(data->getOffset(model))=value->toDouble();
 }
 
 //JsonSerializedTypeQString
@@ -126,14 +126,14 @@ QString JsonSerializedTypeQString::GetId()
     return "JsonSerializedTypeQString";
 }
 
-QJsonValue JsonSerializedTypeQString::SerializationJson(void *model)
+QJsonValue JsonSerializedTypeQString::SerializationJson(const void* model, SerializedData* data)
 {
-     return *(QString*)model;
+     return *(QString*)(data->getOffset(model));
 }
 
-void JsonSerializedTypeQString::DeserializationJson(void *model, QJsonValue *value)
+void JsonSerializedTypeQString::DeserializationJson(const void* model, SerializedData* data, const QJsonValue* value)
 {
-    *(QString*)model=value->toString();
+    *(QString*)(data->getOffset(model))=value->toString();
 }
 
 //JsonSerializedTypeIJsonModel
@@ -142,14 +142,14 @@ QString JsonSerializedTypeIJsonModel::GetId()
     return "JsonSerializedTypeIJsonModel";
 }
 
-QJsonValue JsonSerializedTypeIJsonModel::SerializationJson(void *model)
+QJsonValue JsonSerializedTypeIJsonModel::SerializationJson(const void* model, SerializedData* data)
 {
-    return ((IJsonModel *)model)->EncodeToJson();
+    return ((IJsonModel *)(data->getOffset(model)))->EncodeToJson();
 }
 
-void JsonSerializedTypeIJsonModel::DeserializationJson(void *model, QJsonValue *value)
+void JsonSerializedTypeIJsonModel::DeserializationJson(const void* model, SerializedData* data, const QJsonValue* value)
 {
-    ((IJsonModel *)model)->DecodeFromJson(value->toString());
+    ((IJsonModel *)(data->getOffset(model)))->DecodeFromJson(value->toString());
 }
 
 
@@ -160,18 +160,18 @@ QString JsonSerializedTypePIJsonModel::GetId()
     return "JsonSerializedTypePIJsonModel";
 }
 
-QJsonValue JsonSerializedTypePIJsonModel::SerializationJson(void *model)
+QJsonValue JsonSerializedTypePIJsonModel::SerializationJson(const void* model, SerializedData* data)
 {
-    if((*(IJsonModel **)model) == nullptr)
+    if((*(IJsonModel **)(data->getOffset(model))) == nullptr)
         return QJsonValue();
 
-    return (*(IJsonModel **)model)->EncodeToJson();
+    return (*(IJsonModel **)(data->getOffset(model)))->EncodeToJson();
 }
 
-void JsonSerializedTypePIJsonModel::DeserializationJson(void *model, QJsonValue *value)
+void JsonSerializedTypePIJsonModel::DeserializationJson(const void* model, SerializedData* data, const QJsonValue* value)
 {
     if(value->isNull())
         return;
 
-    (*(IJsonModel **)model)->DecodeFromJson(value->toString());
+    (*(IJsonModel **)(data->getOffset(model)))->DecodeFromJson(value->toString());
 }

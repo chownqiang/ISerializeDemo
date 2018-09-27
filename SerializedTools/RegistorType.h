@@ -11,7 +11,9 @@ public:
     RegistorType();
     RegistorType(const RegistorType& data);
     RegistorType(const QString typeName);
-    void RegistorField(const void* pThis, QString key, void* keyPointer,QString iSerializedTypeId);
+    void RegistorField(const void* pThis, QString key, void* keyPointer, QString iSerializedTypeId);
+    void RegistorField(const void *pThis, QString key, void *keyPointer, QString iSerializedTypeId, std::function<QString(void* data)> customerFunc );
+
     QList<SerializedData>* GetKeys();
 
     QString typeName;
