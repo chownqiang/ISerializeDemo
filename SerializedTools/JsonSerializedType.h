@@ -132,6 +132,23 @@ public:
     void DeserializationJson(const void* model, SerializedData* data, const QJsonValue* value);
 };
 
+class JsonSerializedTypeQVector_int : public AbsJsonSerializedType
+{
+    // ISerializedType interface
+public:
+    JsonSerializedTypeQVector_int(QString id);
+    QString GetId();
+
+    // AbsJsonSerializedType interface
+public:
+    QJsonValue SerializationJson(const void* model, SerializedData* data);
+    void DeserializationJson(const void* model, SerializedData* data, const QJsonValue* value);
+
+private:
+    QString id;
+};
+
+
 
 #endif // JSONSERIALIZETYPE_H
 

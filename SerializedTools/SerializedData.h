@@ -16,6 +16,7 @@ public:
     int64_t offset;
     QString typeId;
     std::function<QString(void* data)> func;
+    QString nextkey;
 };
 
 

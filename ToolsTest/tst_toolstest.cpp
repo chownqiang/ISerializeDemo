@@ -1,7 +1,9 @@
+#include "Simpleclass.h"
 #include "Student.h"
 #include "Teacher.h"
 #include "../SerializedTools/SerializedTool.h"
 
+#include <JsonSerialized.h>
 #include <QString>
 #include <QtTest>
 
@@ -19,6 +21,7 @@ private Q_SLOTS:
     void TestQPair_QString_PStudent();
     void TestStudent();
     void TestTeacher();
+    void TestSimpleClass();
 };
 
 ToolsTest::ToolsTest()
@@ -157,6 +160,26 @@ void ToolsTest::TestTeacher()
     QVERIFY2(t.name == t2.name,"t.name");
     QVERIFY2(t.st->age == t2.st->age,"t.st->age");
     QVERIFY2(t.st->name == t2.st->name,"t.st->name");
+}
+
+void ToolsTest::TestSimpleClass()
+{
+    SimpleClass sc ;
+    sc.p.append(1);
+    sc.p.append(2);
+    sc.p.append(3);
+
+    ISerializedType* cs =  new JsonSerializedTypeQVector_int("qvector_int");
+    JsonSerialized::Instance()->RegisterCustomerType(cs);
+
+    QString json = sc.EncodeToJson();
+    qDebug() << json;
+    SimpleClass sc2;
+    sc2.DecodeFromJson(json);
+    QString json2 = sc2.EncodeToJson();
+
+    QVERIFY2(json == json2,"json == json");
+
 }
 
 QTEST_APPLESS_MAIN(ToolsTest)

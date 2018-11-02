@@ -5,12 +5,21 @@
 
 JsonSerialized* JsonSerialized::Instance()
 {
-    JsonSerialized* model  = nullptr;
+    static JsonSerialized* model  = nullptr;
     if(model)
         return model;
 
     model = new JsonSerialized();
     return model;
+}
+
+bool JsonSerialized::RegisterCustomerType(ISerializedType *ctype)
+{
+    if(this->serializedType.contains(ctype->GetId()))
+        qDebug() << "has exist key:" << ctype->GetId();
+    else
+        this->serializedType.insert(ctype->GetId(),ctype);
+
 }
 
 QString JsonSerialized::Serialization(const void* data, QList<SerializedData>* dataKeys)
@@ -120,4 +129,6 @@ JsonSerialized::JsonSerialized()
 
     }
 }
+
+
 

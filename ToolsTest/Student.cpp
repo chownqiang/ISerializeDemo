@@ -1,7 +1,7 @@
 #include "Student.h"
-#include "../SerializedTools/SerializedTool.h"
-#include "../SerializedTools/RegistorType.h"
-#include "../SerializedTools/JsonSerializeType.h"
+#include "SerializedTool.h"
+#include "RegistorType.h"
+#include "JsonSerializeType.h"
 
 Student::Student()
 {

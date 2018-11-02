@@ -34,7 +34,9 @@ SOURCES += \
     ../SerializedTools/SerializedData.cpp \
     ../SerializedTools/SerializedTool.cpp \
     Student.cpp \
-    Teacher.cpp
+    Teacher.cpp \
+    Classroom.cpp \
+    Simpleclass.cpp
 
 HEADERS += \
     ../SerializedTools/ISerialized.h \
@@ -47,4 +49,8 @@ HEADERS += \
     ../SerializedTools/SerializedTool.h \
     ../SerializedTools/serializedtools_global.h \
     Student.h \
-    Teacher.h
+    Teacher.h \
+    Classroom.h \
+    Simpleclass.h
+
+INCLUDEPATH += ../SerializedTools/

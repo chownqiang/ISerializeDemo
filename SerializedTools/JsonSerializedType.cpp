@@ -1,6 +1,9 @@
 #include "JsonSerializedType.h"
 #include "SerializedData.h"
 #include "ISerializedModel.h"
+#include "QList"
+
+#include <QJsonArray>
 
 //AbsJsonSerializeType
 QString AbsJsonSerializedType::GetTypename()
@@ -174,4 +177,39 @@ void JsonSerializedTypePIJsonModel::DeserializationJson(const void* model, Seria
         return;
 
     (*(IJsonModel **)(data->getOffset(model)))->DecodeFromJson(value->toString());
+}
+
+
+
+JsonSerializedTypeQVector_int::JsonSerializedTypeQVector_int(QString id)
+{
+    this->id = id;
+}
+
+QString JsonSerializedTypeQVector_int::GetId()
+{
+    return this->id;
+}
+
+QJsonValue JsonSerializedTypeQVector_int::SerializationJson(const void *model, SerializedData *data)
+{
+
+    QVector<int>* ts = (QVector<int>*)data->getOffset(model);
+    QJsonArray arr;
+    foreach (int temp, *ts)
+    {
+        arr.push_back(temp);
+    }
+    return arr;
+}
+
+void JsonSerializedTypeQVector_int::DeserializationJson(const void *model, SerializedData *data, const QJsonValue *value)
+{
+    QJsonArray  arr = value->toArray();
+
+    for(int i=0; i < arr.size(); i++ )
+    {
+        int t = arr.at(i).toInt();
+        (*(QVector<int>*)data->getOffset(model)).append(t);
+    }
 }

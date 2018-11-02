@@ -1,7 +1,7 @@
 #ifndef STUDENT_H
 #define STUDENT_H
 #include <QString>
-#include "../SerializedTools/ISerializedModel.h"
+#include "ISerializedModel.h"
 
 class Student : IJsonModel
 {
