@@ -169,7 +169,7 @@ void ToolsTest::TestSimpleClass()
     sc.p.append(2);
     sc.p.append(3);
 
-    ISerializedType* cs =  new JsonSerializedTypeQVector_int("qvector_int");
+    ISerializedType* cs =  new JsonSerializedTypeQVector_int<int>("qvector_int");
     JsonSerialized::Instance()->RegisterCustomerType(cs);
 
     QString json = sc.EncodeToJson();

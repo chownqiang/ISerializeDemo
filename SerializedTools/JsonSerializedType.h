@@ -2,7 +2,10 @@
 #define JSONSERIALIZEDTYPE_H
 
 #include "ISerializedType.h"
+#include "SerializedData.h"
+#include <QJsonArray>
 #include <QJsonValue>
+#include <QVector>
 
 class AbsJsonSerializedType : public ISerializedType
 {
@@ -132,17 +135,36 @@ public:
     void DeserializationJson(const void* model, SerializedData* data, const QJsonValue* value);
 };
 
+template <typename vType>
 class JsonSerializedTypeQVector_int : public AbsJsonSerializedType
 {
     // ISerializedType interface
 public:
-    JsonSerializedTypeQVector_int(QString id);
-    QString GetId();
+    JsonSerializedTypeQVector_int(QString id):id(id){}
+    QString GetId(){return this->id;}
 
     // AbsJsonSerializedType interface
 public:
-    QJsonValue SerializationJson(const void* model, SerializedData* data);
-    void DeserializationJson(const void* model, SerializedData* data, const QJsonValue* value);
+    QJsonValue SerializationJson(const void* model, SerializedData* data)
+    {
+        QVector<vType>* ts = (QVector<vType>*)data->getOffset(model);
+        QJsonArray arr;
+        foreach (int temp, *ts)
+        {
+            arr.push_back(temp);
+        }
+        return arr;
+    }
+    void DeserializationJson(const void* model, SerializedData* data, const QJsonValue* value)
+    {
+        QJsonArray  arr = value->toArray();
+
+        for(int i=0; i < arr.size(); i++ )
+        {
+            int t = arr.at(i).toInt();
+            (*(QVector<vType>*)data->getOffset(model)).append(t);
+        }
+    }
 
 private:
     QString id;
